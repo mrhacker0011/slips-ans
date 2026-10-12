@@ -1,0 +1,988 @@
+CS-306 Core Java and Web Technology-I
+TYBSc (Computer Science), Semester V — Practical Slip Solutions
+Based on the 30 slips in the supplied PDF. Each solution is a runnable starting point; save each Java class using its public class name. For JavaFX, add JavaFX libraries to your IDE/project. For Node.js, save as .js and run with node filename.js.
+Repeated / similar questions
+●	Exact full-slip duplicates: none found in the 30-page PDF.
+●	Repeated/similar topics: HTML/CSS registration forms (Slip 1 Q2, Slip 2 Q2); Java file reading/text processing (Slips 5, 10, 19; related Node.js fs file tasks in Slips 22–30); inheritance (Slips 6, 11, 21, 24, 26); user-defined exceptions (Slips 7, 26, 28, 29); JavaScript arrow functions (Slips 9, 11, 12, 14); JavaScript template literals (Slips 10–12); Node.js fs operations (Slips 22–30); CSS hover/pseudo-classes (Slips 6–7); JavaFX button/event handling (Slips 14–20).
+●	These are topic overlaps, not identical questions. Q3 in every slip is Viva (5 marks).
+ 
+Slip 1
+Q1. Array sum and ascending sort
+import java.util.*;
+public class ArraySumSort {
+ public static void main(String[] args) {
+  Scanner sc=new Scanner(System.in); System.out.print("How many elements? "); int n=sc.nextInt();
+  int[] a=new int[n]; int sum=0;
+  for(int i=0;i<n;i++){a[i]=sc.nextInt();sum+=a[i];}
+  Arrays.sort(a); System.out.println("Sum = "+sum);
+  System.out.println("Ascending = "+Arrays.toString(a));
+ }
+}
+Q2. College registration form
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>College Registration</title>
+<style>body{
+  font-family:Arial;
+  background:#eef2f7
+}
+form{
+  max-width:520px;
+  margin:30px auto;
+  background:white;
+  padding:22px;
+  border-radius:12px
+}
+label{
+  display:block;
+  margin-top:12px
+}
+input,select,button{
+  width:100%;
+  padding:9px;
+  box-sizing:border-box
+}
+</style>
+</head>
+<body>
+<form>
+<h2>College Registration</h2>
+<label>Full name</label>
+<input required minlength="3" pattern="[A-Za-z ]+" />
+<label>Email</label>
+<input type="email" required/>
+<label>Mobile</label>
+<input type="tel" pattern="[0-9]{
+  10
+}
+" required/>
+<label>Date of birth</label>
+<input type="date" required/>
+<label>Course</label>
+<select required>
+<option value="">Select</option>
+<option>BSc Computer Science</option>
+<option>BCA</option>
+</select>
+<label>Password</label>
+<input type="password" minlength="8" required/>
+<button>Register</button>
+</form>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 2
+Q1. Armstrong numbers in a range
+import java.util.*;
+
+public class ArmstrongRange {
+
+ static boolean armstrong(int n){
+  int x=n,d=String.valueOf(n).length(),sum=0;
+   do{
+  int r=x%10;
+  sum+=(int)Math.pow(r,d);
+  x/=10;
+
+}
+while(x>0);
+  return sum==n;
+
+}
+
+ public static void main(String[] args){
+  Scanner s=new Scanner(System.in);
+  System.out.print("Start and end: ");
+  int a=s.nextInt(),b=s.nextInt();
+  for(int i=Math.max(0,a);
+  i<=b;
+  i++)if(armstrong(i))System.out.print(i+" ");
+
+}
+
+}
+Q2. Student registration form
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>body{
+  font-family:Arial;
+  background:#f2f6ff
+}
+form{
+  max-width:480px;
+  margin:25px auto;
+  padding:20px;
+  background:white
+}
+label{
+  display:block;
+  margin-top:10px
+}
+input,select,button{
+  width:100%;
+  padding:9px
+}
+</style>
+</head>
+<body>
+<form>
+<h2>Student Registration</h2>
+<label>Name</label>
+<input required pattern="[A-Za-z ]{
+  3,
+}
+" />
+<label>Roll number</label>
+<input type="number" min="1" required/>
+<label>Email</label>
+<input type="email" required/>
+<label>Phone</label>
+<input pattern="[0-9]{
+  10
+}
+" required/>
+<label>Course</label>
+<select required>
+<option value="">Choose</option>
+<option>BSc CS</option>
+<option>BSc IT</option>
+</select>
+<label>Birth date</label>
+<input type="date" required/>
+<button>Submit</button>
+</form>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 3
+Q1. String package Con and Comp
+// Save in folder stringops/
+// Con.java: package stringops; public class Con { public void join(String a,String b){System.out.println("Concatenated: "+a+b);} }
+// Comp.java: package stringops; public class Comp { public void compare(String a,String b){System.out.println(a.equals(b)?"Strings are equal":"Strings are not equal");} }
+// Main.java (outside package):
+import stringops.Con; import stringops.Comp;
+public class Main { public static void main(String[] args){new Con().join("Core ","Java");new Comp().compare("Java","java");} }
+// Compile: javac stringops/*.java Main.java ; run: java Main
+Q2. Responsive college homepage with Flexbox
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>*{
+  box-sizing:border-box
+}
+body{
+  margin:0;
+  font-family:Arial
+}
+header,footer{
+  background:#12345a;
+  color:white;
+  padding:20px;
+  text-align:center
+}
+nav{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  background:#dce8f5;
+  padding:14px;
+  flex-wrap:wrap
+}
+main{
+  display:flex;
+  gap:20px;
+  padding:24px;
+  flex-wrap:wrap
+}
+article{
+  flex:2;
+  min-width:240px;
+  background:#f4f7fb;
+  padding:18px
+}
+aside{
+  flex:1;
+  min-width:180px;
+  background:#e8eef5;
+  padding:18px
+}
+</style>
+</head>
+<body>
+<header>
+<h1>ABC College</h1>
+</header>
+<nav>
+<a href="#">Home</a>
+<a href="#">Courses</a>
+<a href="#">Admissions</a>
+<a href="#">Contact</a>
+</nav>
+<main>
+<article>
+<h2>Welcome</h2>
+<p>Explore our courses and campus activities.</p>
+</article>
+<aside>
+<h3>Notices</h3>
+<p>Admissions open.</p>
+</aside>
+</main>
+<footer>© ABC College</footer>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 4
+Q1. Menu-driven matrix operations
+import java.util.*;
+public class MatrixMenu{
+ static Scanner s=new Scanner(System.in);
+ static int[][] read(int r,int c){int[][]a=new int[r][c];for(int i=0;i<r;i++)for(int j=0;j<c;j++)a[i][j]=s.nextInt();return a;}
+ static void show(int[][]a){for(int[] row:a){for(int v:row)System.out.print(v+" ");System.out.println();}}
+ public static void main(String[]z){while(true){System.out.println("1.Add 2.Multiply 3.Transpose 4.Exit");int ch=s.nextInt();if(ch==4)break;
+ if(ch==1){System.out.print("Rows cols: ");int r=s.nextInt(),c=s.nextInt();System.out.println("A:");int[][]a=read(r,c);System.out.println("B:");int[][]b=read(r,c);int[][]o=new int[r][c];for(int i=0;i<r;i++)for(int j=0;j<c;j++)o[i][j]=a[i][j]+b[i][j];show(o);}
+ else if(ch==2){System.out.print("A rows cols: ");int r=s.nextInt(),c=s.nextInt();int[][]a=read(r,c);System.out.print("B rows cols (first must equal "+c+"): ");int r2=s.nextInt(),c2=s.nextInt();if(c!=r2){System.out.println("Incompatible dimensions");continue;}int[][]b=read(r2,c2),o=new int[r][c2];for(int i=0;i<r;i++)for(int j=0;j<c2;j++)for(int k=0;k<c;k++)o[i][j]+=a[i][k]*b[k][j];show(o);}
+ else if(ch==3){System.out.print("Rows cols: ");int r=s.nextInt(),c=s.nextInt();int[][]a=read(r,c),o=new int[c][r];for(int i=0;i<r;i++)for(int j=0;j<c;j++)o[j][i]=a[i][j];show(o);}
+ }}
+}
+Q2. Change heading on button click
+<!doctype html>
+<html>
+<body>
+<h1 id="msg">Hello! Welcome</h1>
+<button onclick="document.getElementById('msg').textContent='Text Changed Successfully!'">Change Text</button>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 5
+Q1. Read text file, reverse text and change case
+import java.nio.file.*;import java.util.*;
+public class ReverseCaseFile{
+ public static void main(String[]args)throws Exception{Scanner s=new Scanner(System.in);System.out.print("File path: ");String p=s.nextLine();String t=Files.readString(Path.of(p));StringBuilder rev=new StringBuilder(t).reverse();StringBuilder out=new StringBuilder();for(char c:rev.toString().toCharArray())out.append(Character.isUpperCase(c)?Character.toLowerCase(c):Character.toUpperCase(c));System.out.println(out);}
+}
+Q2. Responsive image gallery
+<!doctype html>
+<html>
+<head>
+<style>.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;
+  padding:16px
+}
+.gallery img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+  transition:transform .25s,filter .25s
+}
+.gallery img:hover{
+  transform:scale(1.04);
+  filter:brightness(.8)
+}
+</style>
+</head>
+<body>
+<h2>Image Gallery</h2>
+<div class="gallery">
+<img src="https://picsum.photos/id/1015/400/300" alt="Mountain">
+<img src="https://picsum.photos/id/1018/400/300" alt="Landscape">
+<img src="https://picsum.photos/id/1025/400/300" alt="Dog">
+<img src="https://picsum.photos/id/1039/400/300" alt="Nature">
+</div>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 6
+Q1. Account → SavingAccount → AccountDetail
+class Account{String custname;int accno;Account(){custname="Unknown";accno=0;}Account(String n,int a){custname=n;accno=a;}}
+class SavingAccount extends Account{double savingbal,minbal;SavingAccount(String n,int a,double b,double m){super(n,a);savingbal=b;minbal=m;}}
+public class AccountDetail extends SavingAccount{double depositamt,withdrawalamt;AccountDetail(String n,int a,double b,double m,double d,double w){super(n,a,b,m);depositamt=d;withdrawalamt=w;}
+ void display(){System.out.println(custname+" "+accno+" balance="+savingbal+" minimum="+minbal+" deposit="+depositamt+" withdrawal="+withdrawalamt);}
+ public static void main(String[]x){new AccountDetail("Asha",101,5000,1000,1500,500).display();}}
+Q2. Hover effects for button and link
+<!doctype html>
+<html>
+<head>
+<style>button,a{
+  display:inline-block;
+  padding:12px 18px;
+  background:#1769aa;
+  color:white;
+  border:0;
+  border-radius:6px;
+  text-decoration:none;
+  transition:.2s
+}
+button:hover,a:hover{
+  background:#ff9800;
+  color:#111;
+  transform:scale(1.05)
+}
+</style>
+</head>
+<body>
+<button>Hover over me</button> <a href="#">Hover over link</a>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 7
+Q1. Driver class with user-defined age exception
+class AgeException extends Exception{AgeException(String m){super(m);}}
+public class Driver{String license_no,name,address;int age;
+ Driver(String l,String n,String a,int age)throws AgeException{if(age<18)throw new AgeException("Age is below 18 years");license_no=l;name=n;address=a;this.age=age;}
+ public static void main(String[]x){try{Driver d=new Driver("MH01","Ravi","Pune",17);System.out.println(d.name);}catch(AgeException e){System.out.println(e.getMessage());}}
+}
+Q2. first-child and last-child list styles
+<!doctype html>
+<html>
+<head>
+<style>li:first-child{
+  color:crimson;
+  font-weight:bold;
+  background:#ffe5e5
+}
+li:last-child{
+  color:green;
+  font-weight:bold;
+  background:#e4ffe4
+}
+li{
+  padding:8px;
+  margin:4px
+}
+</style>
+</head>
+<body>
+<h2>Programming Languages</h2>
+<ul>
+<li>Java</li>
+<li>Python</li>
+<li>JavaScript</li>
+<li>C++</li>
+</ul>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 8
+Q1. Abstract Shape with area overriding
+abstract class Shape{int a,b;abstract void printArea();}
+class Rectangle extends Shape{Rectangle(int l,int w){a=l;b=w;}void printArea(){System.out.println("Rectangle area="+(a*b));}}
+class Triangle extends Shape{Triangle(int base,int h){a=base;b=h;}void printArea(){System.out.println("Triangle area="+(0.5*a*b));}}
+class Circle extends Shape{Circle(int r){a=r;}void printArea(){System.out.println("Circle area="+(Math.PI*a*a));}}
+public class ShapeDemo{public static void main(String[]x){new Rectangle(5,4).printArea();new Triangle(6,3).printArea();new Circle(7).printArea();}}
+Q2. Replace image using DOM event
+<!doctype html>
+<html>
+<body>
+<img id="pic" src="https://picsum.photos/id/1015/300/180" alt="Photo" width="300">
+<br>
+<button id="change">Change Image</button>
+<script>const pics=["https://picsum.photos/id/1015/300/180","https://picsum.photos/id/1025/300/180"];
+  let i=0;
+  document.getElementById("change").addEventListener("click",()=>{
+  i=1-i;
+  document.getElementById("pic").src=pics[i];
+
+}
+);
+  </script>
+</body>
+</html>
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 9
+Q1. Employee array and maximum salary
+import java.util.*;
+
+class Employee{
+  int id;
+  String name;
+  double salary;
+  Employee(int i,String n,double s){
+  id=i;
+  name=n;
+  salary=s;
+
+}
+
+}
+
+public class EmployeeMax{
+  public static void main(String[]x){
+  Scanner sc=new Scanner(System.in);
+  System.out.print("n: ");
+  int n=sc.nextInt();
+  Employee[] e=new Employee[n];
+  for(int i=0;
+  i<n;
+  i++){
+  System.out.print("id name salary: ");
+  int id=sc.nextInt();
+  String name=sc.next();
+  double sal=sc.nextDouble();
+  e[i]=new Employee(id,name,sal);
+
+}
+Employee max=e[0];
+  for(Employee a:e)if(a.salary>max.salary)max=a;
+  System.out.println("Maximum salary: "+max.name+" "+max.salary);
+
+}
+
+}
+Q2. Arrow functions arithmetic
+const add=(a,b)=>a+b, sub=(a,b)=>a-b, mul=(a,b)=>a*b, div=(a,b)=>b!==0?a/b:"Cannot divide by zero";
+
+const a=Number(prompt("First number")),b=Number(prompt("Second number"));
+
+document.write(`Add: ${
+  add(a,b)
+}
+<br>Subtract: ${
+  sub(a,b)
+}
+<br>Multiply: ${
+  mul(a,b)
+}
+<br>Divide: ${
+  div(a,b)
+}
+`);
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 10
+Q1. Read abc.txt and print uppercase
+import java.nio.file.*;
+public class UpperFile{public static void main(String[]x)throws Exception{System.out.println(Files.readString(Path.of("abc.txt")).toUpperCase());}}
+Q2. Student report with template literals
+const name="Amit", roll=12, java=85, web=90, dbms=80;
+
+const total=java+web+dbms, avg=total/3;
+
+document.body.innerHTML=`<h2>Student Report</h2>
+<p>Name: ${
+  name
+}
+</p>
+<p>Roll: ${
+  roll
+}
+</p>
+<p>Java: ${
+  java
+}
+</p>
+<p>Web: ${
+  web
+}
+</p>
+<p>DBMS: ${
+  dbms
+}
+</p>
+<p>Total: ${
+  total
+}
+</p>
+<p>Average: ${
+  avg.toFixed(2)
+}
+</p>`;
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 11
+Q1. Vehicle superclass and two subclasses
+import java.util.*;
+class Vehicle{String company;double price;Vehicle(String c,double p){company=c;price=p;}void show(){System.out.print(company+" price="+price);}}
+class LightMotorVehicle extends Vehicle{double mileage;LightMotorVehicle(String c,double p,double m){super(c,p);mileage=m;}void show(){super.show();System.out.println(" mileage="+mileage);}}
+class HeavyMotorVehicle extends Vehicle{double capacity_in_tons;HeavyMotorVehicle(String c,double p,double t){super(c,p);capacity_in_tons=t;}void show(){super.show();System.out.println(" capacity="+capacity_in_tons+" tons");}}
+public class VehicleDemo{public static void main(String[]x){Scanner s=new Scanner(System.in);System.out.print("n: ");int n=s.nextInt();for(int i=0;i<n;i++){System.out.print("type (L/H), company, price: ");String t=s.next();String c=s.next();double p=s.nextDouble();if(t.equalsIgnoreCase("L")){System.out.print("mileage: ");new LightMotorVehicle(c,p,s.nextDouble()).show();}else{System.out.print("capacity tons: ");new HeavyMotorVehicle(c,p,s.nextDouble()).show();}}}}
+Q2. Arrow function total and average of 3 marks
+const average=(a,b,c)=>(a+b+c)/3;
+  const total=(a,b,c)=>a+b+c;
+
+const m1=Number(prompt("Subject 1")),m2=Number(prompt("Subject 2")),m3=Number(prompt("Subject 3"));
+
+document.write(`Total: ${
+  total(m1,m2,m3)
+}
+<br>Average: ${
+  average(m1,m2,m3).toFixed(2)
+}
+`);
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 12
+Q1. Package game: Indoor and Outdoor
+// package game; save Indoor.java and Outdoor.java in game folder
+// Indoor.java: package game; public class Indoor {String game;String[] players;public Indoor(){this("Chess",new String[]{"A","B"});}public Indoor(String g,String[]p){game=g;players=p;}public void display(){System.out.println("Indoor "+game+": "+String.join(", ",players));}}
+// Outdoor.java: package game; public class Outdoor {String game;String[] players;public Outdoor(){this("Cricket",new String[]{"C","D"});}public Outdoor(String g,String[]p){game=g;players=p;}public void display(){System.out.println("Outdoor "+game+": "+String.join(", ",players));}}
+// Main.java:
+import game.*; public class Main{public static void main(String[]x){new Indoor().display();new Outdoor("Football",new String[]{"Raj","Sam"}).display();}}
+Q2. Product bill using arrow function/template literals
+const bill=(price,qty)=>price*qty;
+  const product="Notebook",price=40,qty=3;
+
+document.write(`<h2>Bill</h2>Product: ${
+  product
+}
+<br>Price: ₹${
+  price
+}
+<br>Quantity: ${
+  qty
+}
+<br>
+<b>Total: ₹${
+  bill(price,qty)
+}
+</b>`);
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 13
+Q1. Clock validation and AM/PM
+import java.util.*;
+
+public class Clock{
+  int h,m,s;
+  Clock(int h,int m,int s){
+  setTime(h,m,s);
+
+}
+void setTime(int h,int m,int s){
+  if(h<0||h>23||m<0||m>59||s<0||s>59)throw new IllegalArgumentException("Invalid time");
+  this.h=h;
+  this.m=m;
+  this.s=s;
+
+}
+void display(){
+  System.out.printf("%02d:%02d:%02d %s%n",h%12==0?12:h%12,m,s,h<12?"AM":"PM");
+
+}
+public static void main(String[]x){
+  Scanner sc=new Scanner(System.in);
+  try{
+  Clock c=new Clock(sc.nextInt(),sc.nextInt(),sc.nextInt());
+  c.display();
+
+}
+catch(Exception e){
+  System.out.println(e.getMessage());
+
+}
+
+}
+
+}
+Q2. Swap two numbers with array destructuring
+let a=Number(prompt("a")),b=Number(prompt("b"));
+[a,b]=[b,a];
+document.write(`After swap: a=${a}, b=${b}`);
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 14
+Q1. JavaFX prime checker
+import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.control.*;
+  import javafx.scene.layout.*;
+  import javafx.stage.Stage;
+
+public class PrimeFX extends Application{
+  public void start(Stage st){
+  TextField in=new TextField(),out=new TextField();
+  out.setEditable(false);
+  Button b=new Button("Process");
+  b.setOnAction(e->{
+  try{
+  int n=Integer.parseInt(in.getText());
+  boolean p=n>=2;
+  for(int i=2;
+  i<=Math.sqrt(n)&&p;
+  i++)if(n%i==0)p=false;
+  out.setText(p?"Prime":"Not prime");
+
+}
+catch(Exception ex){
+  out.setText("Enter integer");
+
+}
+
+}
+);
+  VBox root=new VBox(10,new Label("Number"),in,b,new Label("Result"),out);
+  st.setScene(new Scene(root,300,200));
+  st.setTitle("Prime Checker");
+  st.show();
+
+}
+public static void main(String[]x){
+  launch(x);
+
+}
+
+}
+Q2. Object destructuring employee details
+const employee={
+  name:"Neha",department:"IT",salary:45000
+}
+;
+  const {
+  name,department,salary
+}
+=employee;
+  document.write(`Name: ${
+  name
+}
+<br>Department: ${
+  department
+}
+<br>Salary: ₹${
+  salary
+}
+`);
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 15
+Q1. JavaFX calculator
+import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.control.*;
+  import javafx.scene.layout.*;
+  import javafx.stage.Stage;
+
+public class CalculatorFX extends Application{
+  double first;
+  String op="";
+  TextField display=new TextField();
+  public void start(Stage s){
+  GridPane g=new GridPane();
+  String[] keys={
+  "7","8","9","/","4","5","6","*","1","2","3","-","0","C","=","+"
+}
+;
+  int k=0;
+  for(int r=0;
+  r<4;
+  r++)for(int c=0;
+  c<4;
+  c++){
+  String key=keys[k++];
+  Button b=new Button(key);
+  b.setMaxWidth(Double.MAX_VALUE);
+  b.setOnAction(e->press(key));
+  g.add(b,c,r);
+
+}
+VBox root=new VBox(8,display,g);
+  s.setScene(new Scene(root,280,250));
+  s.show();
+
+}
+void press(String k){
+  try{
+  if("0123456789".contains(k)&&k.length()==1)display.appendText(k);
+  else if("+-*/".contains(k)&&k.length()==1){
+  first=Double.parseDouble(display.getText());
+  op=k;
+  display.clear();
+
+}
+else if(k.equals("=")){
+  double b=Double.parseDouble(display.getText()),v=switch(op){
+  case "+"->first+b;
+  case "-"->first-b;
+  case "*"->first*b;
+  case "/"->first/b;
+  default->b;
+
+}
+;
+  display.setText(""+v);
+
+}
+else display.clear();
+
+}
+catch(Exception e){
+  display.setText("Error");
+
+}
+
+}
+public static void main(String[]x){
+  launch(x);
+
+}
+
+}
+Q2. Copy array with spread and add element
+const original=[10,20,30];
+  const copy=[...original,40];
+  document.write(`Original: ${
+  original
+}
+<br>Copied + new element: ${
+  copy
+}
+`);
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 16
+Q1. JavaFX shopping cart
+import javafx.application.Application;import javafx.scene.Scene;import javafx.scene.control.*;import javafx.scene.layout.*;import javafx.stage.Stage;
+public class CartFX extends Application{int total=0;Label label=new Label("Cart total: ₹0");public void start(Stage s){VBox root=new VBox(10);for(String item:new String[]{"Pen:10","Book:50","Bag:400"}){String[]p=item.split(":");Button b=new Button("Add "+p[0]+" ₹"+p[1]);b.setOnAction(e->{total+=Integer.parseInt(p[1]);label.setText("Cart total: ₹"+total);});root.getChildren().add(b);}root.getChildren().add(label);s.setScene(new Scene(root,260,220));s.show();}public static void main(String[]x){launch(x);}}
+Q2. Rest parameter sum
+const sum=(...values)=>values.reduce((acc,n)=>acc+Number(n),0);
+document.write("Sum = "+sum(10,20,30,40));
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 17
+Q1. JavaFX change background with Ctrl+Alt+O
+import javafx.application.Application;import javafx.scene.Scene;import javafx.scene.input.KeyCode;import javafx.scene.layout.*;import javafx.stage.Stage;
+public class KeyColorFX extends Application{public void start(Stage s){Pane p=new Pane();Scene sc=new Scene(p,400,250);sc.setOnKeyPressed(e->{if(e.isControlDown()&&e.isAltDown()&&e.getCode()==KeyCode.O)p.setStyle("-fx-background-color: orange;");});s.setScene(sc);s.setTitle("Press Ctrl+Alt+O");s.show();p.requestFocus();}public static void main(String[]x){launch(x);}}
+Q2. ES module arithmetic functions
+// arithmetic.js
+export const add=(a,b)=>a+b;
+   export const subtract=(a,b)=>a-b;
+   export const multiply=(a,b)=>a*b;
+   export const divide=(a,b)=>b===0?"Cannot divide by zero":a/b;
+
+// main.js (run in browser using <script type="module" src="main.js">
+</script>)
+import {
+  add,subtract,multiply,divide
+}
+ from "./arithmetic.js";
+
+document.body.innerHTML=`Add ${
+  add(8,2)
+}
+<br>Subtract ${
+  subtract(8,2)
+}
+<br>Multiply ${
+  multiply(8,2)
+}
+<br>Divide ${
+  divide(8,2)
+}
+`;
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 18
+Q1. JavaFX color buttons
+import javafx.application.Application;import javafx.scene.Scene;import javafx.scene.control.*;import javafx.scene.layout.*;import javafx.stage.Stage;
+public class ColorButtonsFX extends Application{public void start(Stage s){Pane p=new Pane();HBox h=new HBox(10);for(String c:new String[]{"red","green","blue"}){Button b=new Button(c);b.setOnAction(e->p.setStyle("-fx-background-color: "+c+";"));h.getChildren().add(b);}p.getChildren().add(h);s.setScene(new Scene(p,350,200));s.show();}public static void main(String[]x){launch(x);}}
+Q2. Node.js HTTP server
+const http=require("http");
+const server=http.createServer((req,res)=>{res.writeHead(200,{"Content-Type":"text/plain"});res.end("Hello from Node.js HTTP server!");});
+server.listen(3000,()=>console.log("Server at http://localhost:3000"));
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 19
+Q1. Count characters, words and lines in file
+import java.nio.file.*;import java.util.*;
+public class FileCount{public static void main(String[]x)throws Exception{Scanner s=new Scanner(System.in);System.out.print("File: ");String t=Files.readString(Path.of(s.nextLine()));long lines=t.isEmpty()?0:t.lines().count();String trim=t.trim();long words=trim.isEmpty()?0:trim.split("\\s+").length;System.out.println("Characters="+t.length()+" Words="+words+" Lines="+lines);}}
+Q2. Async/await login with try-catch
+async function login(user,pass){if(user==="admin"&&pass==="1234")return "Login successful";throw new Error("Invalid username or password");}
+(async()=>{try{const u=prompt("Username"),p=prompt("Password");alert(await login(u,p));}catch(e){alert(e.message);}})();
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 20
+Q1. Mouse moved/click coordinates in JavaFX
+import javafx.application.Application;import javafx.scene.Scene;import javafx.scene.control.*;import javafx.scene.layout.*;import javafx.stage.Stage;
+public class MouseFX extends Application{public void start(Stage s){TextField out=new TextField();Pane p=new Pane();p.setPrefSize(400,250);p.setOnMouseMoved(e->s.setTitle("Moved: "+e.getX()+", "+e.getY()));p.setOnMouseClicked(e->out.setText("Clicked: "+e.getX()+", "+e.getY()));VBox root=new VBox(8,p,out);s.setScene(new Scene(root,420,320));s.show();}public static void main(String[]x){launch(x);}}
+Q2. Promise divide with zero rejection
+function divide(a,b){return new Promise((resolve,reject)=>b===0?reject(new Error("Denominator cannot be zero")):resolve(a/b));}
+divide(Number(prompt("Numerator")),Number(prompt("Denominator"))).then(v=>alert("Result: "+v)).catch(e=>alert(e.message));
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 21
+Q1. College parent and Department child
+class College{constructor(cno,cname,caddr){this.cno=cno;this.cname=cname;this.caddr=caddr;}}
+class Department extends College{constructor(cno,cname,caddr,dno,dname){super(cno,cname,caddr);this.dno=dno;this.dname=dname;}display(){console.log(this.cno,this.cname,this.caddr,this.dno,this.dname);}}
+new Department(1,"ABC College","Pune",10,"Computer Science").display();
+Q2. Node.js path module
+const path=require("path");
+const p=path.join("users","student","notes.txt");
+console.log("join:",p);
+console.log("resolve:",path.resolve(p));
+console.log("basename:",path.basename(p));
+console.log("dirname:",path.dirname(p));
+console.log("extname:",path.extname(p));
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 22
+Q1. Product interface and object count
+interface Showable{void display();}
+class Product implements Showable{int product_id,product_quantity;String product_name;double product_cost;static int count=0;Product(){this(0,"Unknown",0,0);}Product(int id,String n,double c,int q){product_id=id;product_name=n;product_cost=c;product_quantity=q;count++;}public void display(){System.out.println(product_id+" "+product_name+" cost="+product_cost+" qty="+product_quantity);}}
+public class ProductDemo{public static void main(String[]x){Product a=new Product();Product b=new Product(1,"Pen",10,5);a.display();b.display();System.out.println("Objects="+Product.count);}}
+Q2. Node.js asynchronous fs operations
+const fs=require("fs");
+fs.writeFile("sample.txt","Hello",(e)=>{if(e)throw e;console.log("Written");fs.readFile("sample.txt","utf8",(e,d)=>{if(e)throw e;console.log(d);fs.appendFile("sample.txt"," Node",(e)=>{if(e)throw e;console.log("Appended");});});});
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 23
+Q1. Multilevel inheritance Continent → Country → State
+class Continent{String continent;Continent(String c){continent=c;}}
+class Country extends Continent{String country;Country(String c,String n){super(c);country=n;}}
+class State extends Country{String state,place;State(String c,String n,String s,String p){super(c,n);state=s;place=p;}void display(){System.out.println(place+", "+state+", "+country+", "+continent);}}
+public class PlaceDemo{public static void main(String[]x){new State("Asia","India","Maharashtra","Pune").display();}}
+Q2. Node.js create/write/read/append file
+const fs=require("fs");
+const f="demo.txt";
+fs.writeFileSync(f,"First line\n");
+console.log("Created and wrote");
+console.log("Read:",fs.readFileSync(f,"utf8"));
+fs.appendFileSync(f,"Appended line\n");
+console.log("After append:",fs.readFileSync(f,"utf8"));
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 24
+Q1. Abstract Shape area and volume; Cylinder
+abstract class Shape{abstract double area();abstract double volume();}
+class Cylinder extends Shape{double radius,height;Cylinder(double r,double h){radius=r;height=h;}double area(){return 2*Math.PI*radius*(radius+height);}double volume(){return Math.PI*radius*radius*height;}}
+public class CylinderDemo{public static void main(String[]x){Cylinder c=new Cylinder(3,5);System.out.println("Total surface area="+c.area());System.out.println("Volume="+c.volume());}}
+Q2. Compare sync and async Node fs
+const fs=require("fs");
+console.log("Sync start");
+fs.writeFileSync("sync.txt","sync data");
+console.log("Sync complete");
+console.log("Async start");
+fs.writeFile("async.txt","async data",e=>{if(e)console.error(e);else console.log("Async complete");});
+console.log("This may print before async completion");
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 25
+Q1. Calculator interface add/subtract
+interface Calculator{int add(int a,int b);int subtract(int a,int b);}
+class SimpleCalc implements Calculator{public int add(int a,int b){return a+b;}public int subtract(int a,int b){return a-b;}}
+public class CalcDemo{public static void main(String[]x){SimpleCalc c=new SimpleCalc();System.out.println(c.add(10,5));System.out.println(c.subtract(10,5));}}
+Q2. Directory management and JSON
+const fs=require("fs"),path=require("path");
+const dir="sampleDir";
+if(!fs.existsSync(dir))fs.mkdirSync(dir);
+console.log(fs.readdirSync("."));
+const data={name:"Asha",marks:88};
+fs.writeFileSync("data.json",JSON.stringify(data,null,2));
+const obj=JSON.parse(fs.readFileSync("data.json","utf8"));
+console.log(obj);
+fs.renameSync(dir,"renamedDir");
+fs.rmSync("renamedDir",{recursive:true,force:true});
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 26
+Q1. Student attendance eligibility exception
+class NotEligibleException extends Exception{NotEligibleException(String m){super(m);}}
+public class Student{String student_name;int student_rollno,total_lectures,attended_lectures;Student(String n,int r,int t,int a){student_name=n;student_rollno=r;total_lectures=t;attended_lectures=a;}
+void display()throws NotEligibleException{double pct=100.0*attended_lectures/total_lectures;if(pct<75)throw new NotEligibleException("Student is Not Eligible for Exam");System.out.println(student_name+" "+student_rollno+" Attendance="+pct+"%");}
+public static void main(String[]x){try{new Student("Amit",1,100,80).display();}catch(Exception e){System.out.println(e.getMessage());}}}
+Q2. Async copy, rename and delete file
+const fs=require("fs");
+fs.copyFile("a.txt","copy.txt",e=>{if(e)return console.error(e.message);console.log("Copied");fs.rename("copy.txt","renamed.txt",e=>{if(e)return console.error(e.message);console.log("Renamed");fs.unlink("renamed.txt",e=>{if(e)console.error(e.message);else console.log("Deleted");});});});
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 27
+Q1. Person class, five objects, this keyword
+import java.util.*;
+class Person{String Personname,Panno;String Aadharno;Person(String Personname,String Aadharno,String Panno){this.Personname=Personname;this.Aadharno=Aadharno;this.Panno=Panno;}void display(){System.out.println(Personname+" Aadhaar="+Aadharno+" PAN="+Panno);}}
+public class PersonDemo{public static void main(String[]x){Scanner s=new Scanner(System.in);Person[]p=new Person[5];for(int i=0;i<5;i++){System.out.println("Enter name Aadhaar PAN");p[i]=new Person(s.next(),s.next(),s.next());}for(Person a:p)a.display();}}
+Q2. Read/modify/write JSON properties
+const fs=require("fs");
+const file="data.json";
+const obj=JSON.parse(fs.readFileSync(file,"utf8"));
+obj.name="Updated Name";
+obj.active=true;
+fs.writeFileSync(file,JSON.stringify(obj,null,2));
+console.log("Updated JSON:",obj);
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 28
+Q1. MyDate with InvalidDateException
+import java.time.*;import java.util.*;
+class InvalidDateException extends Exception{InvalidDateException(String m){super(m);}}
+public class MyDate{int day,month,year;void accept(int d,int m,int y)throws InvalidDateException{try{LocalDate.of(y,m,d);day=d;month=m;year=y;}catch(DateTimeException e){throw new InvalidDateException("InvalidDateException");}}void display(){System.out.printf("%02d/%02d/%04d%n",day,month,year);}public static void main(String[]x){MyDate d=new MyDate();try{d.accept(29,2,2025);d.display();}catch(Exception e){System.out.println(e.getMessage());}}}
+Q2. List files filtered by extensions
+const fs=require("fs"),path=require("path");
+const dir=process.argv[2]||".";
+const allowed=new Set([".txt",".json",".js"]);
+fs.readdir(dir,{withFileTypes:true},(e,items)=>{if(e)return console.error(e.message);items.filter(x=>x.isFile()&&allowed.has(path.extname(x.name))).forEach(x=>console.log(x.name));});
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 29
+Q1. Static method: zero exception and prime check
+import java.util.*;
+class ZeroNumberException extends Exception{ZeroNumberException(String m){super(m);}}
+public class PrimeStatic{static void check(int n)throws ZeroNumberException{if(n==0)throw new ZeroNumberException("Number is 0");if(n<2){System.out.println("Not prime");return;}for(int i=2;i<=Math.sqrt(n);i++)if(n%i==0){System.out.println("Not prime");return;}System.out.println("Prime");}
+public static void main(String[]x){Scanner s=new Scanner(System.in);try{check(s.nextInt());}catch(Exception e){System.out.println(e.getMessage());}}}
+Q2. File statistics with fs.stat
+const fs=require("fs");
+const p=process.argv[2]||"data.json";
+fs.stat(p,(e,st)=>{if(e)return console.error(e.message);console.log("Size:",st.size,"bytes");console.log("File:",st.isFile(),"Directory:",st.isDirectory());console.log("Created:",st.birthtime);console.log("Accessed:",st.atime);console.log("Modified:",st.mtime);});
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Slip 30
+Q1. MyNumber positive/negative odd/even using command-line argument
+public class MyNumber{
+  private int n;
+  MyNumber(){
+  n=0;
+
+}
+MyNumber(int n){
+  this.n=n;
+
+}
+boolean isNegative(){
+  return n<0;
+
+}
+boolean isPositive(){
+  return n>0;
+
+}
+boolean isOdd(){
+  return n%2!=0;
+
+}
+boolean isEven(){
+  return n%2==0;
+
+}
+
+public static void main(String[]args){
+  int v=args.length==0?0:Integer.parseInt(args[0]);
+  MyNumber m=new MyNumber(v);
+  System.out.println("Value="+v+" Negative="+m.isNegative()+" Positive="+m.isPositive()+" Odd="+m.isOdd()+" Even="+m.isEven());
+
+}
+
+}
+Q2. Menu-driven Node.js text-file manager
+const fs=require("fs"),path=require("path"),readline=require("readline");const rl=readline.createInterface({input:process.stdin,output:process.stdout});function ask(q){return new Promise(r=>rl.question(q,r));}
+(async()=>{while(true){console.log("1 Create 2 Read 3 Update/append 4 Rename 5 Delete 6 Exit");const c=await ask("Choice: ");if(c==="6")break;const f=await ask("Filename: ");try{if(c==="1"){const d=await ask("Content: ");fs.writeFileSync(f,d);console.log("Created");}else if(c==="2")console.log(fs.readFileSync(f,"utf8"));else if(c==="3"){const d=await ask("Text to append: ");fs.appendFileSync(f,d);console.log("Updated");}else if(c==="4"){const n=await ask("New filename: ");fs.renameSync(f,n);console.log("Renamed");}else if(c==="5"){fs.unlinkSync(f);console.log("Deleted");}else console.log("Invalid choice");}catch(e){console.log("Error:",e.message);}}rl.close();})();
+Q3 Viva: prepare definitions, syntax, and explain the program logic for the two practical questions.
+ 
+Important running notes
+●	Java: save public class X in X.java. Compile with javac X.java and run java X. Package examples require folders matching package names.
+●	JavaFX: JavaFX is not bundled with many modern JDK installations. Configure JavaFX SDK and VM options in your IDE before running the JavaFX slips.
+●	HTML/CSS/JavaScript: save the full snippet as .html and open it in a browser. For ES modules, use script type="module"; some browsers require serving the folder over localhost.
+●	Node.js: save code as .js and run node filename.js. For file examples, run in a folder where you have permission to create or edit files.
+●	The examples use simple demonstration data in some slips. Replace it with Scanner/prompt input if your examiner expects user input. Validate inputs and explain key statements during viva.
+●	Slip 5 uses Java 11+ Files.readString; on older Java versions, use Files.readAllBytes(path) with a charset or BufferedReader.
