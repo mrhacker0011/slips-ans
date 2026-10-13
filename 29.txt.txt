@@ -1,0 +1,13 @@
+Slip 29
+
+Q1. Static method: zero exception and prime check
+import java.util.*;
+class ZeroNumberException extends Exception{ZeroNumberException(String m){super(m);}}
+public class PrimeStatic{static void check(int n)throws ZeroNumberException{if(n==0)throw new ZeroNumberException("Number is 0");if(n<2){System.out.println("Not prime");return;}for(int i=2;i<=Math.sqrt(n);i++)if(n%i==0){System.out.println("Not prime");return;}System.out.println("Prime");}
+public static void main(String[]x){Scanner s=new Scanner(System.in);try{check(s.nextInt());}catch(Exception e){System.out.println(e.getMessage());}}}
+
+
+Q2. File statistics with fs.stat
+const fs=require("fs");
+const p=process.argv[2]||"data.json";
+fs.stat(p,(e,st)=>{if(e)return console.error(e.message);console.log("Size:",st.size,"bytes");console.log("File:",st.isFile(),"Directory:",st.isDirectory());console.log("Created:",st.birthtime);console.log("Accessed:",st.atime);console.log("Modified:",st.mtime);});

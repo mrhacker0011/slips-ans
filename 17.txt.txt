@@ -1,0 +1,32 @@
+Slip 17
+
+Q1. JavaFX change background with Ctrl+Alt+O
+import javafx.application.Application;import javafx.scene.Scene;import javafx.scene.input.KeyCode;import javafx.scene.layout.*;import javafx.stage.Stage;
+public class KeyColorFX extends Application{public void start(Stage s){Pane p=new Pane();Scene sc=new Scene(p,400,250);sc.setOnKeyPressed(e->{if(e.isControlDown()&&e.isAltDown()&&e.getCode()==KeyCode.O)p.setStyle("-fx-background-color: orange;");});s.setScene(sc);s.setTitle("Press Ctrl+Alt+O");s.show();p.requestFocus();}public static void main(String[]x){launch(x);}}
+Q2. ES module arithmetic functions
+// arithmetic.js
+export const add=(a,b)=>a+b;
+   export const subtract=(a,b)=>a-b;
+   export const multiply=(a,b)=>a*b;
+   export const divide=(a,b)=>b===0?"Cannot divide by zero":a/b;
+
+// main.js (run in browser using <script type="module" src="main.js">
+</script>)
+import {
+  add,subtract,multiply,divide
+}
+ from "./arithmetic.js";
+
+document.body.innerHTML=`Add ${
+  add(8,2)
+}
+<br>Subtract ${
+  subtract(8,2)
+}
+<br>Multiply ${
+  multiply(8,2)
+}
+<br>Divide ${
+  divide(8,2)
+}
+`;

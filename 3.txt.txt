@@ -1,0 +1,78 @@
+Slip 3
+Q1. String package Con and Comp
+// Save in folder stringops/
+// Con.java: package stringops; public class Con { public void join(String a,String b){System.out.println("Concatenated: "+a+b);} }
+// Comp.java: package stringops; public class Comp { public void compare(String a,String b){System.out.println(a.equals(b)?"Strings are equal":"Strings are not equal");} }
+// Main.java (outside package):
+import stringops.Con; import stringops.Comp;
+public class Main { public static void main(String[] args){new Con().join("Core ","Java");new Comp().compare("Java","java");} }
+// Compile: javac stringops/*.java Main.java ; run: java Main
+Q2. Responsive college homepage with Flexbox
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>*{
+  box-sizing:border-box
+}
+body{
+  margin:0;
+  font-family:Arial
+}
+header,footer{
+  background:#12345a;
+  color:white;
+  padding:20px;
+  text-align:center
+}
+nav{
+  display:flex;
+  justify-content:center;
+  gap:24px;
+  background:#dce8f5;
+  padding:14px;
+  flex-wrap:wrap
+}
+main{
+  display:flex;
+  gap:20px;
+  padding:24px;
+  flex-wrap:wrap
+}
+article{
+  flex:2;
+  min-width:240px;
+  background:#f4f7fb;
+  padding:18px
+}
+aside{
+  flex:1;
+  min-width:180px;
+  background:#e8eef5;
+  padding:18px
+}
+</style>
+</head>
+<body>
+<header>
+<h1>ABC College</h1>
+</header>
+<nav>
+<a href="#">Home</a>
+<a href="#">Courses</a>
+<a href="#">Admissions</a>
+<a href="#">Contact</a>
+</nav>
+<main>
+<article>
+<h2>Welcome</h2>
+<p>Explore our courses and campus activities.</p>
+</article>
+<aside>
+<h3>Notices</h3>
+<p>Admissions open.</p>
+</aside>
+</main>
+<footer>© ABC College</footer>
+</body>
+</html>

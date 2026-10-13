@@ -1,0 +1,8 @@
+Slip 19
+
+Q1. Count characters, words and lines in file
+import java.nio.file.*;import java.util.*;
+public class FileCount{public static void main(String[]x)throws Exception{Scanner s=new Scanner(System.in);System.out.print("File: ");String t=Files.readString(Path.of(s.nextLine()));long lines=t.isEmpty()?0:t.lines().count();String trim=t.trim();long words=trim.isEmpty()?0:trim.split("\\s+").length;System.out.println("Characters="+t.length()+" Words="+words+" Lines="+lines);}}
+Q2. Async/await login with try-catch
+async function login(user,pass){if(user==="admin"&&pass==="1234")return "Login successful";throw new Error("Invalid username or password");}
+(async()=>{try{const u=prompt("Username"),p=prompt("Password");alert(await login(u,p));}catch(e){alert(e.message);}})();

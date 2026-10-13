@@ -1,0 +1,9 @@
+Slip 16
+
+Q1. JavaFX shopping cart
+import javafx.application.Application;import javafx.scene.Scene;import javafx.scene.control.*;import javafx.scene.layout.*;import javafx.stage.Stage;
+public class CartFX extends Application{int total=0;Label label=new Label("Cart total: ₹0");public void start(Stage s){VBox root=new VBox(10);for(String item:new String[]{"Pen:10","Book:50","Bag:400"}){String[]p=item.split(":");Button b=new Button("Add "+p[0]+" ₹"+p[1]);b.setOnAction(e->{total+=Integer.parseInt(p[1]);label.setText("Cart total: ₹"+total);});root.getChildren().add(b);}root.getChildren().add(label);s.setScene(new Scene(root,260,220));s.show();}public static void main(String[]x){launch(x);}}
+
+Q2. Rest parameter sum
+const sum=(...values)=>values.reduce((acc,n)=>acc+Number(n),0);
+document.write("Sum = "+sum(10,20,30,40));

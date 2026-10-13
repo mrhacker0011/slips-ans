@@ -1,0 +1,23 @@
+Slip 11
+
+Q1. Vehicle superclass and two subclasses
+import java.util.*;
+class Vehicle{String company;double price;Vehicle(String c,double p){company=c;price=p;}void show(){System.out.print(company+" price="+price);}}
+class LightMotorVehicle extends Vehicle{double mileage;LightMotorVehicle(String c,double p,double m){super(c,p);mileage=m;}void show(){super.show();System.out.println(" mileage="+mileage);}}
+class HeavyMotorVehicle extends Vehicle{double capacity_in_tons;HeavyMotorVehicle(String c,double p,double t){super(c,p);capacity_in_tons=t;}void show(){super.show();System.out.println(" capacity="+capacity_in_tons+" tons");}}
+public class VehicleDemo{public static void main(String[]x){Scanner s=new Scanner(System.in);System.out.print("n: ");int n=s.nextInt();for(int i=0;i<n;i++){System.out.print("type (L/H), company, price: ");String t=s.next();String c=s.next();double p=s.nextDouble();if(t.equalsIgnoreCase("L")){System.out.print("mileage: ");new LightMotorVehicle(c,p,s.nextDouble()).show();}else{System.out.print("capacity tons: ");new HeavyMotorVehicle(c,p,s.nextDouble()).show();}}}}
+
+
+Q2. Arrow function total and average of 3 marks
+const average=(a,b,c)=>(a+b+c)/3;
+  const total=(a,b,c)=>a+b+c;
+
+const m1=Number(prompt("Subject 1")),m2=Number(prompt("Subject 2")),m3=Number(prompt("Subject 3"));
+
+document.write(`Total: ${
+  total(m1,m2,m3)
+}
+<br>Average: ${
+  average(m1,m2,m3).toFixed(2)
+}
+`);

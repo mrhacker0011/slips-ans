@@ -1,0 +1,39 @@
+Slip 10
+Q1. Read abc.txt and print uppercase
+import java.nio.file.*;
+public class UpperFile{public static void main(String[]x)throws Exception{System.out.println(Files.readString(Path.of("abc.txt")).toUpperCase());}}
+
+Q2. Student report with template literals
+const name="Amit", roll=12, java=85, web=90, dbms=80;
+
+const total=java+web+dbms, avg=total/3;
+
+document.body.innerHTML=`<h2>Student Report</h2>
+<p>Name: ${
+  name
+}
+</p>
+<p>Roll: ${
+  roll
+}
+</p>
+<p>Java: ${
+  java
+}
+</p>
+<p>Web: ${
+  web
+}
+</p>
+<p>DBMS: ${
+  dbms
+}
+</p>
+<p>Total: ${
+  total
+}
+</p>
+<p>Average: ${
+  avg.toFixed(2)
+}
+</p>`;

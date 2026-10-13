@@ -1,0 +1,68 @@
+Slip 1
+Q1. Array sum and ascending sort
+import java.util.*;
+public class ArraySumSort {
+ public static void main(String[] args) {
+  Scanner sc=new Scanner(System.in); System.out.print("How many elements? "); int n=sc.nextInt();
+  int[] a=new int[n]; int sum=0;
+  for(int i=0;i<n;i++){a[i]=sc.nextInt();sum+=a[i];}
+  Arrays.sort(a); System.out.println("Sum = "+sum);
+  System.out.println("Ascending = "+Arrays.toString(a));
+ }
+}
+
+
+Q2. College registration form
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>College Registration</title>
+<style>body{
+  font-family:Arial;
+  background:#eef2f7
+}
+form{
+  max-width:520px;
+  margin:30px auto;
+  background:white;
+  padding:22px;
+  border-radius:12px
+}
+label{
+  display:block;
+  margin-top:12px
+}
+input,select,button{
+  width:100%;
+  padding:9px;
+  box-sizing:border-box
+}
+</style>
+</head>
+<body>
+<form>
+<h2>College Registration</h2>
+<label>Full name</label>
+<input required minlength="3" pattern="[A-Za-z ]+" />
+<label>Email</label>
+<input type="email" required/>
+<label>Mobile</label>
+<input type="tel" pattern="[0-9]{
+  10
+}
+" required/>
+<label>Date of birth</label>
+<input type="date" required/>
+<label>Course</label>
+<select required>
+<option value="">Select</option>
+<option>BSc Computer Science</option>
+<option>BCA</option>
+</select>
+<label>Password</label>
+<input type="password" minlength="8" required/>
+<button>Register</button>
+</form>
+</body>
+</html>

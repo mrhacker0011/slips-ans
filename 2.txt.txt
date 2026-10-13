@@ -1,0 +1,86 @@
+Slip 2
+Q1. Armstrong numbers in a range
+import java.util.*;
+
+public class ArmstrongRange {
+
+ static boolean armstrong(int n){
+  int x=n,d=String.valueOf(n).length(),sum=0;
+   do{
+  int r=x%10;
+  sum+=(int)Math.pow(r,d);
+  x/=10;
+
+}
+while(x>0);
+  return sum==n;
+
+}
+
+ public static void main(String[] args){
+  Scanner s=new Scanner(System.in);
+  System.out.print("Start and end: ");
+  int a=s.nextInt(),b=s.nextInt();
+  for(int i=Math.max(0,a);
+  i<=b;
+  i++)if(armstrong(i))System.out.print(i+" ");
+
+}
+
+}
+
+
+Q2. Student registration form
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>body{
+  font-family:Arial;
+  background:#f2f6ff
+}
+form{
+  max-width:480px;
+  margin:25px auto;
+  padding:20px;
+  background:white
+}
+label{
+  display:block;
+  margin-top:10px
+}
+input,select,button{
+  width:100%;
+  padding:9px
+}
+</style>
+</head>
+<body>
+<form>
+<h2>Student Registration</h2>
+<label>Name</label>
+<input required pattern="[A-Za-z ]{
+  3,
+}
+" />
+<label>Roll number</label>
+<input type="number" min="1" required/>
+<label>Email</label>
+<input type="email" required/>
+<label>Phone</label>
+<input pattern="[0-9]{
+  10
+}
+" required/>
+<label>Course</label>
+<select required>
+<option value="">Choose</option>
+<option>BSc CS</option>
+<option>BSc IT</option>
+</select>
+<label>Birth date</label>
+<input type="date" required/>
+<button>Submit</button>
+</form>
+</body>
+</html>

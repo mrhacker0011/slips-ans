@@ -1,0 +1,13 @@
+Slip 28
+
+Q1. MyDate with InvalidDateException
+import java.time.*;import java.util.*;
+class InvalidDateException extends Exception{InvalidDateException(String m){super(m);}}
+public class MyDate{int day,month,year;void accept(int d,int m,int y)throws InvalidDateException{try{LocalDate.of(y,m,d);day=d;month=m;year=y;}catch(DateTimeException e){throw new InvalidDateException("InvalidDateException");}}void display(){System.out.printf("%02d/%02d/%04d%n",day,month,year);}public static void main(String[]x){MyDate d=new MyDate();try{d.accept(29,2,2025);d.display();}catch(Exception e){System.out.println(e.getMessage());}}}
+
+
+Q2. List files filtered by extensions
+const fs=require("fs"),path=require("path");
+const dir=process.argv[2]||".";
+const allowed=new Set([".txt",".json",".js"]);
+fs.readdir(dir,{withFileTypes:true},(e,items)=>{if(e)return console.error(e.message);items.filter(x=>x.isFile()&&allowed.has(path.extname(x.name))).forEach(x=>console.log(x.name));});

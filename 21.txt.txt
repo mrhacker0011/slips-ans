@@ -1,0 +1,15 @@
+Slip 21
+
+Q1. College parent and Department child
+class College{constructor(cno,cname,caddr){this.cno=cno;this.cname=cname;this.caddr=caddr;}}
+class Department extends College{constructor(cno,cname,caddr,dno,dname){super(cno,cname,caddr);this.dno=dno;this.dname=dname;}display(){console.log(this.cno,this.cname,this.caddr,this.dno,this.dname);}}
+new Department(1,"ABC College","Pune",10,"Computer Science").display();
+
+Q2. Node.js path module
+const path=require("path");
+const p=path.join("users","student","notes.txt");
+console.log("join:",p);
+console.log("resolve:",path.resolve(p));
+console.log("basename:",path.basename(p));
+console.log("dirname:",path.dirname(p));
+console.log("extname:",path.extname(p));

@@ -1,0 +1,23 @@
+Slip 4
+Q1. Menu-driven matrix operations
+import java.util.*;
+public class MatrixMenu{
+ static Scanner s=new Scanner(System.in);
+ static int[][] read(int r,int c){int[][]a=new int[r][c];for(int i=0;i<r;i++)for(int j=0;j<c;j++)a[i][j]=s.nextInt();return a;}
+ static void show(int[][]a){for(int[] row:a){for(int v:row)System.out.print(v+" ");System.out.println();}}
+ public static void main(String[]z){while(true){System.out.println("1.Add 2.Multiply 3.Transpose 4.Exit");int ch=s.nextInt();if(ch==4)break;
+ if(ch==1){System.out.print("Rows cols: ");int r=s.nextInt(),c=s.nextInt();System.out.println("A:");int[][]a=read(r,c);System.out.println("B:");int[][]b=read(r,c);int[][]o=new int[r][c];for(int i=0;i<r;i++)for(int j=0;j<c;j++)o[i][j]=a[i][j]+b[i][j];show(o);}
+ else if(ch==2){System.out.print("A rows cols: ");int r=s.nextInt(),c=s.nextInt();int[][]a=read(r,c);System.out.print("B rows cols (first must equal "+c+"): ");int r2=s.nextInt(),c2=s.nextInt();if(c!=r2){System.out.println("Incompatible dimensions");continue;}int[][]b=read(r2,c2),o=new int[r][c2];for(int i=0;i<r;i++)for(int j=0;j<c2;j++)for(int k=0;k<c;k++)o[i][j]+=a[i][k]*b[k][j];show(o);}
+ else if(ch==3){System.out.print("Rows cols: ");int r=s.nextInt(),c=s.nextInt();int[][]a=read(r,c),o=new int[c][r];for(int i=0;i<r;i++)for(int j=0;j<c;j++)o[j][i]=a[i][j];show(o);}
+ }}
+}
+
+
+Q2. Change heading on button click
+<!doctype html>
+<html>
+<body>
+<h1 id="msg">Hello! Welcome</h1>
+<button onclick="document.getElementById('msg').textContent='Text Changed Successfully!'">Change Text</button>
+</body>
+</html>

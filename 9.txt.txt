@@ -1,0 +1,60 @@
+Slip 9
+Q1. Employee array and maximum salary
+import java.util.*;
+
+class Employee{
+  int id;
+  String name;
+  double salary;
+  Employee(int i,String n,double s){
+  id=i;
+  name=n;
+  salary=s;
+
+}
+
+}
+
+public class EmployeeMax{
+  public static void main(String[]x){
+  Scanner sc=new Scanner(System.in);
+  System.out.print("n: ");
+  int n=sc.nextInt();
+  Employee[] e=new Employee[n];
+  for(int i=0;
+  i<n;
+  i++){
+  System.out.print("id name salary: ");
+  int id=sc.nextInt();
+  String name=sc.next();
+  double sal=sc.nextDouble();
+  e[i]=new Employee(id,name,sal);
+
+}
+Employee max=e[0];
+  for(Employee a:e)if(a.salary>max.salary)max=a;
+  System.out.println("Maximum salary: "+max.name+" "+max.salary);
+
+}
+
+}
+
+
+Q2. Arrow functions arithmetic
+const add=(a,b)=>a+b, sub=(a,b)=>a-b, mul=(a,b)=>a*b, div=(a,b)=>b!==0?a/b:"Cannot divide by zero";
+
+const a=Number(prompt("First number")),b=Number(prompt("Second number"));
+
+document.write(`Add: ${
+  add(a,b)
+}
+<br>Subtract: ${
+  sub(a,b)
+}
+<br>Multiply: ${
+  mul(a,b)
+}
+<br>Divide: ${
+  div(a,b)
+}
+`);

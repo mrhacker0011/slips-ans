@@ -1,0 +1,11 @@
+Slip 26
+
+Q1. Student attendance eligibility exception
+class NotEligibleException extends Exception{NotEligibleException(String m){super(m);}}
+public class Student{String student_name;int student_rollno,total_lectures,attended_lectures;Student(String n,int r,int t,int a){student_name=n;student_rollno=r;total_lectures=t;attended_lectures=a;}
+void display()throws NotEligibleException{double pct=100.0*attended_lectures/total_lectures;if(pct<75)throw new NotEligibleException("Student is Not Eligible for Exam");System.out.println(student_name+" "+student_rollno+" Attendance="+pct+"%");}
+public static void main(String[]x){try{new Student("Amit",1,100,80).display();}catch(Exception e){System.out.println(e.getMessage());}}}
+
+Q2. Async copy, rename and delete file
+const fs=require("fs");
+fs.copyFile("a.txt","copy.txt",e=>{if(e)return console.error(e.message);console.log("Copied");fs.rename("copy.txt","renamed.txt",e=>{if(e)return console.error(e.message);console.log("Renamed");fs.unlink("renamed.txt",e=>{if(e)console.error(e.message);else console.log("Deleted");});});});

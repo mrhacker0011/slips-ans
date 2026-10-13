@@ -1,0 +1,29 @@
+Slip 12
+
+
+Q1. Package game: Indoor and Outdoor
+// package game; save Indoor.java and Outdoor.java in game folder
+// Indoor.java: package game; public class Indoor {String game;String[] players;public Indoor(){this("Chess",new String[]{"A","B"});}public Indoor(String g,String[]p){game=g;players=p;}public void display(){System.out.println("Indoor "+game+": "+String.join(", ",players));}}
+// Outdoor.java: package game; public class Outdoor {String game;String[] players;public Outdoor(){this("Cricket",new String[]{"C","D"});}public Outdoor(String g,String[]p){game=g;players=p;}public void display(){System.out.println("Outdoor "+game+": "+String.join(", ",players));}}
+// Main.java:
+import game.*; public class Main{public static void main(String[]x){new Indoor().display();new Outdoor("Football",new String[]{"Raj","Sam"}).display();}}
+
+
+Q2. Product bill using arrow function/template literals
+const bill=(price,qty)=>price*qty;
+  const product="Notebook",price=40,qty=3;
+
+document.write(`<h2>Bill</h2>Product: ${
+  product
+}
+<br>Price: ₹${
+  price
+}
+<br>Quantity: ${
+  qty
+}
+<br>
+<b>Total: ₹${
+  bill(price,qty)
+}
+</b>`);

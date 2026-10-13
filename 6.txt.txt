@@ -1,0 +1,34 @@
+Slip 6
+Q1. Account → SavingAccount → AccountDetail
+class Account{String custname;int accno;Account(){custname="Unknown";accno=0;}Account(String n,int a){custname=n;accno=a;}}
+class SavingAccount extends Account{double savingbal,minbal;SavingAccount(String n,int a,double b,double m){super(n,a);savingbal=b;minbal=m;}}
+public class AccountDetail extends SavingAccount{double depositamt,withdrawalamt;AccountDetail(String n,int a,double b,double m,double d,double w){super(n,a,b,m);depositamt=d;withdrawalamt=w;}
+ void display(){System.out.println(custname+" "+accno+" balance="+savingbal+" minimum="+minbal+" deposit="+depositamt+" withdrawal="+withdrawalamt);}
+ public static void main(String[]x){new AccountDetail("Asha",101,5000,1000,1500,500).display();}}
+
+
+Q2. Hover effects for button and link
+<!doctype html>
+<html>
+<head>
+<style>button,a{
+  display:inline-block;
+  padding:12px 18px;
+  background:#1769aa;
+  color:white;
+  border:0;
+  border-radius:6px;
+  text-decoration:none;
+  transition:.2s
+}
+button:hover,a:hover{
+  background:#ff9800;
+  color:#111;
+  transform:scale(1.05)
+}
+</style>
+</head>
+<body>
+<button>Hover over me</button> <a href="#">Hover over link</a>
+</body>
+</html>

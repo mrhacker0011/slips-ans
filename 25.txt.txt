@@ -1,0 +1,18 @@
+Slip 25
+
+Q1. Calculator interface add/subtract
+interface Calculator{int add(int a,int b);int subtract(int a,int b);}
+class SimpleCalc implements Calculator{public int add(int a,int b){return a+b;}public int subtract(int a,int b){return a-b;}}
+public class CalcDemo{public static void main(String[]x){SimpleCalc c=new SimpleCalc();System.out.println(c.add(10,5));System.out.println(c.subtract(10,5));}}
+
+Q2. Directory management and JSON
+const fs=require("fs"),path=require("path");
+const dir="sampleDir";
+if(!fs.existsSync(dir))fs.mkdirSync(dir);
+console.log(fs.readdirSync("."));
+const data={name:"Asha",marks:88};
+fs.writeFileSync("data.json",JSON.stringify(data,null,2));
+const obj=JSON.parse(fs.readFileSync("data.json","utf8"));
+console.log(obj);
+fs.renameSync(dir,"renamedDir");
+fs.rmSync("renamedDir",{recursive:true,force:true});

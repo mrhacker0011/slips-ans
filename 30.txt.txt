@@ -1,0 +1,44 @@
+Slip 30
+
+
+Q1. MyNumber positive/negative odd/even using command-line argument
+public class MyNumber{
+  private int n;
+  MyNumber(){
+  n=0;
+
+}
+MyNumber(int n){
+  this.n=n;
+
+}
+boolean isNegative(){
+  return n<0;
+
+}
+boolean isPositive(){
+  return n>0;
+
+}
+boolean isOdd(){
+  return n%2!=0;
+
+}
+boolean isEven(){
+  return n%2==0;
+
+}
+
+public static void main(String[]args){
+  int v=args.length==0?0:Integer.parseInt(args[0]);
+  MyNumber m=new MyNumber(v);
+  System.out.println("Value="+v+" Negative="+m.isNegative()+" Positive="+m.isPositive()+" Odd="+m.isOdd()+" Even="+m.isEven());
+
+}
+
+}
+
+
+Q2. Menu-driven Node.js text-file manager
+const fs=require("fs"),path=require("path"),readline=require("readline");const rl=readline.createInterface({input:process.stdin,output:process.stdout});function ask(q){return new Promise(r=>rl.question(q,r));}
+(async()=>{while(true){console.log("1 Create 2 Read 3 Update/append 4 Rename 5 Delete 6 Exit");const c=await ask("Choice: ");if(c==="6")break;const f=await ask("Filename: ");try{if(c==="1"){const d=await ask("Content: ");fs.writeFileSync(f,d);console.log("Created");}else if(c==="2")console.log(fs.readFileSync(f,"utf8"));else if(c==="3"){const d=await ask("Text to append: ");fs.appendFileSync(f,d);console.log("Updated");}else if(c==="4"){const n=await ask("New filename: ");fs.renameSync(f,n);console.log("Renamed");}else if(c==="5"){fs.unlinkSync(f);console.log("Deleted");}else console.log("Invalid choice");}catch(e){console.log("Error:",e.message);}}rl.close();})();

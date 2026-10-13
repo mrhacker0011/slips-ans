@@ -1,0 +1,17 @@
+Slip 24
+
+
+Q1. Abstract Shape area and volume; Cylinder
+abstract class Shape{abstract double area();abstract double volume();}
+class Cylinder extends Shape{double radius,height;Cylinder(double r,double h){radius=r;height=h;}double area(){return 2*Math.PI*radius*(radius+height);}double volume(){return Math.PI*radius*radius*height;}}
+public class CylinderDemo{public static void main(String[]x){Cylinder c=new Cylinder(3,5);System.out.println("Total surface area="+c.area());System.out.println("Volume="+c.volume());}}
+
+
+Q2. Compare sync and async Node fs
+const fs=require("fs");
+console.log("Sync start");
+fs.writeFileSync("sync.txt","sync data");
+console.log("Sync complete");
+console.log("Async start");
+fs.writeFile("async.txt","async data",e=>{if(e)console.error(e);else console.log("Async complete");});
+console.log("This may print before async completion");

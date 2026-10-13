@@ -1,0 +1,63 @@
+Slip 14
+Q1. JavaFX prime checker
+import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.control.*;
+  import javafx.scene.layout.*;
+  import javafx.stage.Stage;
+
+public class PrimeFX extends Application{
+  public void start(Stage st){
+  TextField in=new TextField(),out=new TextField();
+  out.setEditable(false);
+  Button b=new Button("Process");
+  b.setOnAction(e->{
+  try{
+  int n=Integer.parseInt(in.getText());
+  boolean p=n>=2;
+  for(int i=2;
+  i<=Math.sqrt(n)&&p;
+  i++)if(n%i==0)p=false;
+  out.setText(p?"Prime":"Not prime");
+
+}
+catch(Exception ex){
+  out.setText("Enter integer");
+
+}
+
+}
+);
+  VBox root=new VBox(10,new Label("Number"),in,b,new Label("Result"),out);
+  st.setScene(new Scene(root,300,200));
+  st.setTitle("Prime Checker");
+  st.show();
+
+}
+public static void main(String[]x){
+  launch(x);
+
+}
+
+}
+
+
+Q2. Object destructuring employee details
+const employee={
+  name:"Neha",department:"IT",salary:45000
+}
+;
+  const {
+  name,department,salary
+}
+=employee;
+  document.write(`Name: ${
+  name
+}
+<br>Department: ${
+  department
+}
+<br>Salary: ₹${
+  salary
+}
+`);

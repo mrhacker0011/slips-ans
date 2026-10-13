@@ -1,0 +1,12 @@
+Slip 22
+
+
+Q1. Product interface and object count
+interface Showable{void display();}
+class Product implements Showable{int product_id,product_quantity;String product_name;double product_cost;static int count=0;Product(){this(0,"Unknown",0,0);}Product(int id,String n,double c,int q){product_id=id;product_name=n;product_cost=c;product_quantity=q;count++;}public void display(){System.out.println(product_id+" "+product_name+" cost="+product_cost+" qty="+product_quantity);}}
+public class ProductDemo{public static void main(String[]x){Product a=new Product();Product b=new Product(1,"Pen",10,5);a.display();b.display();System.out.println("Objects="+Product.count);}}
+
+
+Q2. Node.js asynchronous fs operations
+const fs=require("fs");
+fs.writeFile("sample.txt","Hello",(e)=>{if(e)throw e;console.log("Written");fs.readFile("sample.txt","utf8",(e,d)=>{if(e)throw e;console.log(d);fs.appendFile("sample.txt"," Node",(e)=>{if(e)throw e;console.log("Appended");});});});

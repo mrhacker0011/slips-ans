@@ -1,0 +1,39 @@
+Slip 7
+Q1. Driver class with user-defined age exception
+class AgeException extends Exception{AgeException(String m){super(m);}}
+public class Driver{String license_no,name,address;int age;
+ Driver(String l,String n,String a,int age)throws AgeException{if(age<18)throw new AgeException("Age is below 18 years");license_no=l;name=n;address=a;this.age=age;}
+ public static void main(String[]x){try{Driver d=new Driver("MH01","Ravi","Pune",17);System.out.println(d.name);}catch(AgeException e){System.out.println(e.getMessage());}}
+}
+
+
+Q2. first-child and last-child list styles
+<!doctype html>
+<html>
+<head>
+<style>li:first-child{
+  color:crimson;
+  font-weight:bold;
+  background:#ffe5e5
+}
+li:last-child{
+  color:green;
+  font-weight:bold;
+  background:#e4ffe4
+}
+li{
+  padding:8px;
+  margin:4px
+}
+</style>
+</head>
+<body>
+<h2>Programming Languages</h2>
+<ul>
+<li>Java</li>
+<li>Python</li>
+<li>JavaScript</li>
+<li>C++</li>
+</ul>
+</body>
+</html>

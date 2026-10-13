@@ -1,0 +1,84 @@
+Slip 15
+Q1. JavaFX calculator
+import javafx.application.Application;
+  import javafx.scene.Scene;
+  import javafx.scene.control.*;
+  import javafx.scene.layout.*;
+  import javafx.stage.Stage;
+
+public class CalculatorFX extends Application{
+  double first;
+  String op="";
+  TextField display=new TextField();
+  public void start(Stage s){
+  GridPane g=new GridPane();
+  String[] keys={
+  "7","8","9","/","4","5","6","*","1","2","3","-","0","C","=","+"
+}
+;
+  int k=0;
+  for(int r=0;
+  r<4;
+  r++)for(int c=0;
+  c<4;
+  c++){
+  String key=keys[k++];
+  Button b=new Button(key);
+  b.setMaxWidth(Double.MAX_VALUE);
+  b.setOnAction(e->press(key));
+  g.add(b,c,r);
+
+}
+VBox root=new VBox(8,display,g);
+  s.setScene(new Scene(root,280,250));
+  s.show();
+
+}
+void press(String k){
+  try{
+  if("0123456789".contains(k)&&k.length()==1)display.appendText(k);
+  else if("+-*/".contains(k)&&k.length()==1){
+  first=Double.parseDouble(display.getText());
+  op=k;
+  display.clear();
+
+}
+else if(k.equals("=")){
+  double b=Double.parseDouble(display.getText()),v=switch(op){
+  case "+"->first+b;
+  case "-"->first-b;
+  case "*"->first*b;
+  case "/"->first/b;
+  default->b;
+
+}
+;
+  display.setText(""+v);
+
+}
+else display.clear();
+
+}
+catch(Exception e){
+  display.setText("Error");
+
+}
+
+}
+public static void main(String[]x){
+  launch(x);
+
+}
+
+}
+
+Q2. Copy array with spread and add element
+const original=[10,20,30];
+  const copy=[...original,40];
+  document.write(`Original: ${
+  original
+}
+<br>Copied + new element: ${
+  copy
+}
+`);

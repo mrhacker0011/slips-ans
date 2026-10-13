@@ -1,0 +1,42 @@
+Slip 13
+
+Q1. Clock validation and AM/PM
+import java.util.*;
+
+public class Clock{
+  int h,m,s;
+  Clock(int h,int m,int s){
+  setTime(h,m,s);
+
+}
+void setTime(int h,int m,int s){
+  if(h<0||h>23||m<0||m>59||s<0||s>59)throw new IllegalArgumentException("Invalid time");
+  this.h=h;
+  this.m=m;
+  this.s=s;
+
+}
+void display(){
+  System.out.printf("%02d:%02d:%02d %s%n",h%12==0?12:h%12,m,s,h<12?"AM":"PM");
+
+}
+public static void main(String[]x){
+  Scanner sc=new Scanner(System.in);
+  try{
+  Clock c=new Clock(sc.nextInt(),sc.nextInt(),sc.nextInt());
+  c.display();
+
+}
+catch(Exception e){
+  System.out.println(e.getMessage());
+
+}
+
+}
+
+}
+
+Q2. Swap two numbers with array destructuring
+let a=Number(prompt("a")),b=Number(prompt("b"));
+[a,b]=[b,a];
+document.write(`After swap: a=${a}, b=${b}`);

@@ -1,0 +1,27 @@
+Slip 8
+Q1. Abstract Shape with area overriding
+abstract class Shape{int a,b;abstract void printArea();}
+class Rectangle extends Shape{Rectangle(int l,int w){a=l;b=w;}void printArea(){System.out.println("Rectangle area="+(a*b));}}
+class Triangle extends Shape{Triangle(int base,int h){a=base;b=h;}void printArea(){System.out.println("Triangle area="+(0.5*a*b));}}
+class Circle extends Shape{Circle(int r){a=r;}void printArea(){System.out.println("Circle area="+(Math.PI*a*a));}}
+public class ShapeDemo{public static void main(String[]x){new Rectangle(5,4).printArea();new Triangle(6,3).printArea();new Circle(7).printArea();}}
+
+
+Q2. Replace image using DOM event
+<!doctype html>
+<html>
+<body>
+<img id="pic" src="https://picsum.photos/id/1015/300/180" alt="Photo" width="300">
+<br>
+<button id="change">Change Image</button>
+<script>const pics=["https://picsum.photos/id/1015/300/180","https://picsum.photos/id/1025/300/180"];
+  let i=0;
+  document.getElementById("change").addEventListener("click",()=>{
+  i=1-i;
+  document.getElementById("pic").src=pics[i];
+
+}
+);
+  </script>
+</body>
+</html>
